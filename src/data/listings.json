@@ -1,0 +1,66 @@
+[
+  {
+    "slug": "spintex-single-room",
+    "title": "Bright single room — Spintex Road",
+    "type": "room",
+    "location": "Spintex, Accra",
+    "price": "GHS 450",
+    "priceNote": "per month",
+    "description": "Clean single room with shared facilities, close to main road and tro-tro stops. Water and security included.",
+    "featured": true,
+    "image": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80"
+  },
+  {
+    "slug": "teshie-self-contain",
+    "title": "New self-contain — Teshie",
+    "type": "self-contain",
+    "location": "Teshie, Accra",
+    "price": "GHS 1,200",
+    "priceNote": "per month",
+    "description": "Private bath and kitchenette, tiled floors, prepaid meter. Quiet street, parking for one bike.",
+    "featured": true,
+    "image": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80"
+  },
+  {
+    "slug": "kasoa-residential-plot",
+    "title": "Serviced plot — Kasoa (registered)",
+    "type": "land-sale",
+    "location": "Kasoa, Central Region",
+    "price": "GHS 85,000",
+    "description": "70×100 ft plot in a gated community. Road access and electricity nearby. Ideal for a family home.",
+    "featured": true,
+    "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80"
+  },
+  {
+    "slug": "oyibi-lease-acre",
+    "title": "1-acre agricultural lease",
+    "type": "land-lease",
+    "location": "Oyibi, Accra",
+    "price": "GHS 3,500",
+    "priceNote": "per year",
+    "description": "Fertile acre with water access. Suitable for vegetables or poultry. Minimum 3-year lease.",
+    "featured": false,
+    "image": "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&q=80"
+  },
+  {
+    "slug": "madina-room-near-station",
+    "title": "Single room near Madina station",
+    "type": "room",
+    "location": "Madina, Accra",
+    "price": "GHS 500",
+    "priceNote": "per month",
+    "description": "Walkable to station and market. Shared bath; landlord on-site.",
+    "featured": false,
+    "image": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80"
+  },
+  {
+    "slug": "ashaiman-half-plot",
+    "title": "Half plot — Ashaiman",
+    "type": "land-sale",
+    "location": "Ashaiman",
+    "price": "GHS 42,000",
+    "description": "Corner half plot with documents ready. Busy neighborhood with strong rental demand nearby.",
+    "featured": false,
+    "image": "https://images.unsplash.com/photo-1464226183344-7d660b412f89?w=800&q=80"
+  }
+]
