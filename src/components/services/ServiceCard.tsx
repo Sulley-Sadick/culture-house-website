@@ -1,4 +1,5 @@
 import type { Service } from "@/data/services";
+import { withBasePath } from "@/lib/paths";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 
@@ -32,7 +33,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
                 {/* Figma asset: keep intrinsic 5×5 from the SVG root */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/benefit-bullet.svg"
+                  src={withBasePath("/images/benefit-bullet.svg")}
                   alt=""
                   width={5}
                   height={5}

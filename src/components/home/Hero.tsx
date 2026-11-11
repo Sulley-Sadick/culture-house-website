@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { withBasePath } from "@/lib/paths";
 import { siteConfig } from "@/lib/site";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import { ButtonLink } from "@/components/ui/ButtonLink";
@@ -27,7 +28,7 @@ export function Hero() {
     <section className="overflow-hidden bg-culture-cream">
       <div className="hero-media relative flex min-h-[420px] w-full items-center justify-center overflow-hidden md:min-h-[560px] md:h-[70vh] md:max-h-[720px]">
         <Image
-          src="/images/hero-home.jpg"
+          src={withBasePath("/images/hero-home.jpg")}
           alt="Ghana home exterior — Culture’s House"
           fill
           priority

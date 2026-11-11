@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { withBasePath } from "@/lib/paths";
 import { featuredShowcases } from "@/lib/site";
 import { inquireAboutListing } from "@/lib/whatsapp";
 import { Reveal } from "@/components/ui/Reveal";
@@ -36,7 +37,7 @@ export function FeaturedListings() {
               className="relative block h-60 overflow-hidden md:h-[278px]"
             >
               <Image
-                src={listing.image}
+                src={withBasePath(listing.image)}
                 alt={listing.imageAlt}
                 fill
                 className="object-cover transition-transform duration-500 hover:scale-[1.03]"

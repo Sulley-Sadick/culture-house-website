@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bricolage_Grotesque, Manrope } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { withBasePath } from "@/lib/paths";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
@@ -24,8 +25,8 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   icons: {
-    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
-    apple: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    icon: [{ url: withBasePath("/icon.svg"), type: "image/svg+xml" }],
+    apple: [{ url: withBasePath("/icon.svg"), type: "image/svg+xml" }],
   },
 };
 

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Listing } from "@/types/listing";
 import { listingTypeLabels } from "@/types/listing";
+import { withBasePath } from "@/lib/paths";
 import { inquireAboutListing } from "@/lib/whatsapp";
 
 interface PropertyCardProps {
@@ -16,7 +17,7 @@ export function PropertyCard({ listing }: PropertyCardProps) {
         className="relative block h-60 overflow-hidden md:h-[240px]"
       >
         <Image
-          src={listing.image}
+          src={withBasePath(listing.image)}
           alt={listing.title}
           fill
           className="object-cover transition-transform duration-500 hover:scale-[1.03]"

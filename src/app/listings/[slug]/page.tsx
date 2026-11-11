@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { getListingBySlug, listings } from "@/lib/listings";
+import { withBasePath } from "@/lib/paths";
 import { inquireAboutListing } from "@/lib/whatsapp";
 import { listingTypeLabels } from "@/types/listing";
 
@@ -49,7 +50,7 @@ export default async function ListingDetailPage({ params }: PageProps) {
 
       <div className="relative mt-8 aspect-[16/10] w-full overflow-hidden md:max-w-4xl">
         <Image
-          src={listing.image}
+          src={withBasePath(listing.image)}
           alt={listing.title}
           fill
           className="object-cover"
