@@ -34,6 +34,16 @@ export function Hero() {
           priority
           className="hero-media__image object-cover object-[center_65%]"
           sizes="100vw"
+          // #region agent log
+          onLoad={() => {
+            const resolved = withBasePath("/images/hero-home.jpg");
+            fetch('http://127.0.0.1:7272/ingest/ad8013c2-014f-4f11-a49c-e62bf9c3efc5',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'8faa52'},body:JSON.stringify({sessionId:'8faa52',runId:'pre-fix',hypothesisId:'A',location:'Hero.tsx:onLoad',message:'hero image loaded',data:{resolved,basePath:process.env.NEXT_PUBLIC_BASE_PATH||''},timestamp:Date.now()})}).catch(()=>{});
+          }}
+          onError={() => {
+            const resolved = withBasePath("/images/hero-home.jpg");
+            fetch('http://127.0.0.1:7272/ingest/ad8013c2-014f-4f11-a49c-e62bf9c3efc5',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'8faa52'},body:JSON.stringify({sessionId:'8faa52',runId:'pre-fix',hypothesisId:'A',location:'Hero.tsx:onError',message:'hero image FAILED',data:{resolved,basePath:process.env.NEXT_PUBLIC_BASE_PATH||''},timestamp:Date.now()})}).catch(()=>{});
+          }}
+          // #endregion
         />
         {/* Compass.com-style cloudy dark hero veil for readable centered copy */}
         <div className="hero-media__veil" aria-hidden="true" />

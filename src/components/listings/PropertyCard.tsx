@@ -10,6 +10,8 @@ interface PropertyCardProps {
 }
 
 export function PropertyCard({ listing }: PropertyCardProps) {
+  const resolvedSrc = withBasePath(listing.image);
+
   return (
     <article className="flex h-full flex-col gap-4">
       <Link
@@ -17,11 +19,19 @@ export function PropertyCard({ listing }: PropertyCardProps) {
         className="relative block h-60 overflow-hidden md:h-[240px]"
       >
         <Image
-          src={withBasePath(listing.image)}
+          src={resolvedSrc}
           alt={listing.title}
           fill
           className="object-cover transition-transform duration-500 hover:scale-[1.03]"
           sizes="(max-width: 768px) 100vw, 33vw"
+          // #region agent log
+          onLoad={() => {
+            fetch('http://127.0.0.1:7272/ingest/ad8013c2-014f-4f11-a49c-e62bf9c3efc5',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'8faa52'},body:JSON.stringify({sessionId:'8faa52',runId:'post-fix',hypothesisId:'B',location:'PropertyCard.tsx:onLoad',message:'listing image loaded',data:{slug:listing.slug,resolvedSrc,isRemote:listing.image.startsWith('http')},timestamp:Date.now()})}).catch(()=>{});
+          }}
+          onError={() => {
+            fetch('http://127.0.0.1:7272/ingest/ad8013c2-014f-4f11-a49c-e62bf9c3efc5',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'8faa52'},body:JSON.stringify({sessionId:'8faa52',runId:'post-fix',hypothesisId:'B',location:'PropertyCard.tsx:onError',message:'listing image FAILED',data:{slug:listing.slug,resolvedSrc,rawImage:listing.image,isRemote:listing.image.startsWith('http')},timestamp:Date.now()})}).catch(()=>{});
+          }}
+          // #endregion
         />
       </Link>
 
