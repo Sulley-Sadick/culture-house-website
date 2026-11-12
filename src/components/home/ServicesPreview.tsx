@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { homeServices } from "@/lib/site";
+import { homeServices } from "@/data/home-services";
 import { Reveal } from "@/components/ui/Reveal";
 
 export function ServicesPreview() {

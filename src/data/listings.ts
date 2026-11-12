@@ -12,6 +12,12 @@ export const listingsData: Listing[] = [
       "Clean single room with shared facilities, close to main road and tro-tro stops. Water and security included.",
     featured: true,
     image: "/images/listing-room.jpg",
+    homeTeaser: {
+      label: "ROOM FOR RENT",
+      title: "A room to make your own",
+      summary: "Simple, comfortable living.",
+      imageAlt: "Bright empty rental room with white walls",
+    },
   },
   {
     slug: "teshie-self-contain",
@@ -24,6 +30,12 @@ export const listingsData: Listing[] = [
       "Private bath and kitchenette, tiled floors, prepaid meter. Quiet street, parking for one bike.",
     featured: true,
     image: "/images/listing-self-contain.jpg",
+    homeTeaser: {
+      label: "SELF-CONTAINED FOR RENT",
+      title: "Space for everyday living",
+      summary: "Your space. Your own facilities.",
+      imageAlt: "Self-contained home exterior with tiled walls",
+    },
   },
   {
     slug: "kasoa-residential-plot",
@@ -35,6 +47,12 @@ export const listingsData: Listing[] = [
       "70×100 ft plot in a gated community. Road access and electricity nearby. Ideal for a family home.",
     featured: true,
     image: "/images/listing-land.jpg",
+    homeTeaser: {
+      label: "LAND FOR SALE",
+      title: "Room for your next chapter",
+      summary: "Explore land for your plans.",
+      imageAlt: "Open land plot with grass and trees",
+    },
   },
   {
     slug: "oyibi-lease-acre",

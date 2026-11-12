@@ -34,16 +34,6 @@ export function Hero() {
           priority
           className="hero-media__image object-cover object-[center_65%]"
           sizes="100vw"
-          // #region agent log
-          onLoad={() => {
-            const resolved = withBasePath("/images/hero-home.jpg");
-            fetch('http://127.0.0.1:7272/ingest/ad8013c2-014f-4f11-a49c-e62bf9c3efc5',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'8faa52'},body:JSON.stringify({sessionId:'8faa52',runId:'pre-fix',hypothesisId:'A',location:'Hero.tsx:onLoad',message:'hero image loaded',data:{resolved,basePath:process.env.NEXT_PUBLIC_BASE_PATH||''},timestamp:Date.now()})}).catch(()=>{});
-          }}
-          onError={() => {
-            const resolved = withBasePath("/images/hero-home.jpg");
-            fetch('http://127.0.0.1:7272/ingest/ad8013c2-014f-4f11-a49c-e62bf9c3efc5',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'8faa52'},body:JSON.stringify({sessionId:'8faa52',runId:'pre-fix',hypothesisId:'A',location:'Hero.tsx:onError',message:'hero image FAILED',data:{resolved,basePath:process.env.NEXT_PUBLIC_BASE_PATH||''},timestamp:Date.now()})}).catch(()=>{});
-          }}
-          // #endregion
         />
         {/* Compass.com-style cloudy dark hero veil for readable centered copy */}
         <div className="hero-media__veil" aria-hidden="true" />
@@ -69,14 +59,14 @@ export function Hero() {
               href={whatsappHref}
               external
               variant="whatsapp"
-              className="min-w-0 flex-1 sm:flex-none sm:w-40"
+              className="w-full min-w-0 sm:w-40 sm:flex-none"
             >
               WhatsApp →
             </ButtonLink>
             <ButtonLink
               href={`tel:${primaryPhone.number}`}
               variant="call"
-              className="min-w-0 flex-1 border-culture-cream bg-culture-cream/95 sm:flex-none sm:w-40"
+              className="w-full min-w-0 border-culture-cream bg-culture-cream/95 sm:w-40 sm:flex-none"
             >
               Call us →
             </ButtonLink>

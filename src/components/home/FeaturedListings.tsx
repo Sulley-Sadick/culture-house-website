@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { withBasePath } from "@/lib/paths";
-import { featuredShowcases } from "@/lib/site";
+import { getFeaturedShowcases } from "@/lib/listings";
 import { inquireAboutListing } from "@/lib/whatsapp";
 import { Reveal } from "@/components/ui/Reveal";
 
 export function FeaturedListings() {
+  const featuredShowcases = getFeaturedShowcases();
+
   return (
     <Reveal as="section" className="bg-culture-sand px-6 py-14 md:px-16 md:py-20">
       <div className="mb-8 flex flex-col gap-4 md:mb-10 md:flex-row md:items-start md:gap-20">

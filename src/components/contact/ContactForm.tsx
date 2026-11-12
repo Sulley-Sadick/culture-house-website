@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type ChangeEvent, type FormEvent } from "react";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 type FieldName = "name" | "phone" | "interest" | "message";
 
@@ -70,6 +71,15 @@ export function ContactForm() {
 
     if (Object.keys(nextErrors).length > 0) return;
 
+  const message = [
+      `Hi Culture's House,`,
+      `Name: ${values.name.trim()}`,
+      `Phone: ${values.phone.trim()}`,
+      `Looking for: ${values.interest.trim()}`,
+      values.message.trim(),
+    ].join("\n");
+
+    window.open(buildWhatsAppUrl(message), "_blank", "noopener,noreferrer");
     setSubmitted(true);
   }
 

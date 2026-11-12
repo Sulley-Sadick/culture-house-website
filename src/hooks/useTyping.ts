@@ -1,6 +1,7 @@
 "use client";
 
 import { useLayoutEffect, useRef, useState } from "react";
+import { usePrefersReducedMotion } from "./usePrefersReducedMotion";
 import { useIntersection } from "./useIntersection";
 
 type UseTypingOptions = {
@@ -47,12 +48,7 @@ export function useTyping({
     current !== text;
 
   useLayoutEffect(() => {
-    if (prefersReducedMotion) {
-      setCurrent(text);
-      return;
-    }
-
-    if (!shouldRun) return;
+    if (prefersReducedMotion || !shouldRun) return;
 
     text.split("").forEach((_, index) => {
       if (!timeoutRefId.current) timeoutRefId.current = {};
@@ -75,28 +71,13 @@ export function useTyping({
     };
   }, [shouldRun, text, speedInSeconds, prefersReducedMotion]);
 
-  const output = current ?? "";
-  const isComplete = current === text;
-  const isTyping = Boolean(current) && !isComplete;
+  const output = prefersReducedMotion ? text : (current ?? "");
+  const isComplete = prefersReducedMotion || current === text;
+  const isTyping = !prefersReducedMotion && Boolean(current) && !isComplete;
 
   if (defaultEnabled) {
     return { output, isTyping, isComplete };
   }
 
   return { output, ref, isTyping, isComplete };
-}
-
-function usePrefersReducedMotion() {
-  const [reduced, setReduced] = useState(false);
-
-  useLayoutEffect(() => {
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const update = () => setReduced(media.matches);
-
-    update();
-    media.addEventListener("change", update);
-    return () => media.removeEventListener("change", update);
-  }, []);
-
-  return reduced;
 }

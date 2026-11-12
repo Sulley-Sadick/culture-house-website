@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 type RevealProps = {
   children: ReactNode;
@@ -18,16 +19,14 @@ export function Reveal({
 }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null);
   const [visible, setVisible] = useState(false);
+  const prefersReducedMotion = usePrefersReducedMotion();
+  const show = prefersReducedMotion || visible;
 
   useEffect(() => {
+    if (prefersReducedMotion) return;
+
     const node = ref.current;
     if (!node) return;
-
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (media.matches) {
-      setVisible(true);
-      return;
-    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -40,12 +39,12 @@ export function Reveal({
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, []);
+  }, [prefersReducedMotion]);
 
   return (
     <Tag
       ref={ref as never}
-      className={`reveal${visible ? " reveal--visible" : ""}${className ? ` ${className}` : ""}`}
+      className={`reveal${show ? " reveal--visible" : ""}${className ? ` ${className}` : ""}`}
       style={delayMs ? { transitionDelay: `${delayMs}ms` } : undefined}
     >
       {children}

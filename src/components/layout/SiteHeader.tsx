@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { LogoMark } from "@/components/brand/LogoMark";
+import { isNavLinkActive } from "@/lib/navigation";
 import { siteConfig } from "@/lib/site";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import { ButtonLink } from "@/components/ui/ButtonLink";
@@ -11,13 +12,16 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [menuPath, setMenuPath] = useState(pathname);
   const whatsappHref = buildWhatsAppUrl(
     `Hi ${siteConfig.name}, I would like to inquire about your properties.`,
   );
 
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
+  // Close the mobile menu when the route changes (adjust state during render).
+  if (menuPath !== pathname) {
+    setMenuPath(pathname);
+    if (open) setOpen(false);
+  }
 
   useEffect(() => {
     if (!open) return;
@@ -48,10 +52,7 @@ export function SiteHeader() {
           aria-label="Primary"
         >
           {siteConfig.nav.map((item) => {
-            const active =
-              item.href === "/"
-                ? pathname === "/"
-                : pathname === item.href || pathname.startsWith(`${item.href}/`);
+            const active = isNavLinkActive(pathname, item.href);
 
             return (
               <Link
@@ -118,10 +119,7 @@ export function SiteHeader() {
       >
         <ul className="flex flex-col gap-1 px-6 py-4">
           {siteConfig.nav.map((item) => {
-            const active =
-              item.href === "/"
-                ? pathname === "/"
-                : pathname === item.href || pathname.startsWith(`${item.href}/`);
+            const active = isNavLinkActive(pathname, item.href);
 
             return (
               <li key={item.href}>

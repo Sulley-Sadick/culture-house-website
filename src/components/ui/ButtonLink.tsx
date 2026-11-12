@@ -31,8 +31,9 @@ export function ButtonLink({
   external,
 }: ButtonLinkProps) {
   const classes = [
-    "inline-flex items-center justify-center rounded text-[15px] font-bold transition-colors",
-    "h-[54px] px-6",
+    "inline-flex cursor-pointer items-center justify-center rounded text-base font-bold transition-colors md:text-[15px]",
+    // Roomier padding on small screens; desktop keeps the tighter formal size
+    "min-h-[56px] px-8 py-4 md:h-[54px] md:min-h-0 md:px-6 md:py-0",
     variants[variant],
     className,
   ].join(" ");
