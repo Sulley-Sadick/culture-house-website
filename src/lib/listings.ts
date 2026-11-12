@@ -1,7 +1,7 @@
-import listingsData from "@/data/listings.json";
+import { listingsData } from "@/data/listings";
 import type { Listing } from "@/types/listing";
 
-export const listings: Listing[] = listingsData as Listing[];
+export const listings: Listing[] = listingsData;
 
 export function getListingBySlug(slug: string): Listing | undefined {
   return listings.find((l) => l.slug === slug);
